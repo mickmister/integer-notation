@@ -1,0 +1,158 @@
+.white{
+	background-color: white;
+	height: 120pt;
+	width: 30pt;
+	position: relative;
+	box-shadow: 5px 3px 5px #888888;
+}
+
+.black{
+	background-color: black;
+	height: 60pt;
+	width: 9pt;
+	position: relative;
+	left: -11pt;
+	top: -60pt;
+	margin-right: -18pt;
+	z-index: 1;
+}
+
+.key{
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	display: inline-block;
+}
+
+body{
+	background: #F4EFFD;
+}
+
+#piano{
+	clear: left;
+	float: left;
+	margin-top: 1pt;
+}
+
+#chordArea span{
+	clear: left;
+	float: left;
+	border: 1px black solid;
+	display: inline;
+	margin-top: 5px;
+	padding: 5px;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.matching{
+	float: right;
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	margin-left: 5px;
+	background-color: #E7DFF6;
+	box-shadow: 1px 1px 5px #888888;
+}
+
+.left
+{
+	text-align: left;
+}
+
+.center
+{
+	text-align: center;
+	width: 25px;
+}
+
+.centered
+{
+	text-align: center;
+}
+
+td, th
+{
+	padding-bottom: 10px;
+}
+
+.small
+{
+	font-size: 10pt;
+}
+
+.contain {
+	width: 500px;
+	margin: 0 auto;
+	border: 2px black solid;
+	border-radius: 10px;
+	margin-top: 15px;
+	min-height: 100px;
+	padding: 10px;
+	text-align: center;
+	background-color: #E7DFF6;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+#upperarea{
+	float: left;
+	font-size: 14pt;
+}
+
+#selectDiv{
+	clear: both;
+}
+
+#upperarea table tr:nth-child(2), #upperarea table tr:nth-child(3){
+	font-weight: bold;
+}
+
+.hidden
+{
+	visibility: hidden;
+	display: none;
+}
+
+.keyspan
+{
+	font-size: 9pt;
+	text-align: center;
+}
+
+#keyspan0, #keyspan2, #keyspan4, #keyspan5, #keyspan7, #keyspan9, #keyspan11,
+#keyspan12, #keyspan14, #keyspan16, #keyspan17, #keyspan19, #keyspan21, #keyspan23
+{
+	float: left;
+	width: 24pt;
+}
+
+#keyspan1, #keyspan3, #keyspan6, #keyspan8, #keyspan10, #keyspan13, #keyspan15,
+#keyspan18, #keyspan20, #keyspan22
+{
+	float: left;
+	width: 6pt;
+}
+
+/*.tonic
+{
+	background-color: #4088A4;
+}*/
+
+.chord, .tonic
+{
+	background-color: #99CBDE;
+}
+
+.pentatonic
+{
+	background-color: #3CA496;
+}
+
+.dissonant
+{
+	background-color: #125F7C;
+}
+
+.red
+{
+	background-color: red;
+}
