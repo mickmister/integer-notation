@@ -23,6 +23,11 @@ window.onload = function(){
 	displayChordInfo();
 	$('scaleBox').selectedIndex = scaleNumber;
 	$("scaleBox").onchange = function(){getScaleData();};
+	$('move-up-one').onclick = clickedMoveUp;
+	$('move-down-one').onclick = clickedMoveDown;
+	$('move-to-top').onclick = clickedMoveTop;           //passing the function instead of calling
+	$('move-to-bot').onclick = clickedMoveBot;           //so it will call when it gets clicked
+	                                                     //to automatically run function
 };
 
 // function saveData(){
@@ -244,17 +249,98 @@ function playChord(chord, inversion){
 		setTimeout(function() {noteHit(frequencies[1], keys[1], 250);}, 250);
 		setTimeout(function() {noteHit(frequencies[2], keys[2], 250);}, 500);
 	}
+}
 
+var firstClickedButton = null;
+var secondClickedButton = null;
 
+function handleChordClick(span) {
+	if (firstClickedButton === null){
+		firstClickedButton = span;          // this is the first click
+		clickedFirstButton()
+	}
 
+else if (firstClickedButton === span){
+	firstClickedButton = null;            // checks for pesky double-clicks
+}
+
+	else {
+		secondClickedButton = span;         // dis 2nd clik
+		var className;
+		var text;
+
+		className = firstClickedButton.className
+		text = firstClickedButton.innerText
+
+		firstClickedButton.className = secondClickedButton.className
+		firstClickedButton.innerText = secondClickedButton.innerText
+		secondClickedButton.className = className
+		secondClickedButton.innerText = text
+
+		cleanupClick();
+	}
+}
+
+function clickedFirstButton() {
+
+}
+
+function cleanupClick(span) {
+	firstClickedButton = null;
+	secondClickedButton = null;
+}
+
+function partyOnWayne(parent) {
+	return parent.childNodes.length > 1 && firstClickedButton
+	// if (parent.childNodes.length > 1 && firstClickedButton !== null){
+}
+
+function indexOfChild(parent, child) {
+	var childrenArray = Array.from(parent.children)
+	return childrenArray.indexOf(child)
+}
+
+function clickedMoveUp() {
+	var parent = $('chordArea');
+	if (partyOnWayne(parent)) {
+		var index = indexOfChild(parent, firstClickedButton)
+
+	}
+}
+
+function clickedMoveDown() {
+	var parent = $('chordArea');
+	if (partyOnWayne(parent)) {
+		var index = indexOfChild(parent, firstClickedButton)
+
+	}
+}
+
+function clickedMoveTop() {
+	var parent = $('chordArea');
+	if (partyOnWayne(parent)) {
+		parent.removeChild(firstClickedButton)
+		parent.insertBefore(firstClickedButton, parent.childNodes[0])
+	}
+}
+
+function clickedMoveBot() {
+	var parent = $('chordArea');
+	if (partyOnWayne(parent)) {
+		parent.removeChild(firstClickedButton)
+		parent.appendChild(firstClickedButton)
+	}
 }
 
 
 
-function storeChord(chord, inversion){
+function storeChord(chord, inversion) {
 	var noteArea = $('chordArea');
 	var span = document.createElement('span');
-	span.onclick = function(){noteArea.removeChild(span);};
+	span.onclick = function(){
+		// noteArea.removeChild(span);
+		handleChordClick(span);
+	};
 	span.className = chord + "-" + inversion;
 	var chordName = scaleNames[chord];
 	var labelStuff = ["Root", "First Inversion", "Second Inversion"];
